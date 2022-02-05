@@ -15,6 +15,10 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
@@ -57,13 +61,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvOverview;
-        ImageView tvPoster;
+        ImageView ivPoster;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
-            tvPoster = itemView.findViewById(R.id.tvPoster);
+            ivPoster = itemView.findViewById(R.id.ivPoster);
         }
 
         public void bind(Movie movie) {
@@ -80,12 +84,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             Drawable errorFigure = ResourcesCompat.getDrawable(res, android.R.drawable.stat_notify_error, null);
             Drawable placeholderFigure = ResourcesCompat.getDrawable(res, android.R.drawable.ic_menu_gallery, null);
 
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions = requestOptions.transform(new RoundedCorners(32));
+
             Glide.with(context)
                     .load(imageURL)
-                    .override(500, 500)
+                    .apply(requestOptions)
                     .placeholder(placeholderFigure)
                     .error(errorFigure)
-                    .into(tvPoster);
+                    .into(ivPoster);
         }
     }
 }
