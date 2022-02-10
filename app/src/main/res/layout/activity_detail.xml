@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="34sp"
+        tools:text="Spider-Man: No Way Home" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@android:style/Widget.Material.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="10"
+        android:rating="7.8" />
+
+    <TextView
+        android:id="@+id/tvDetailOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man." />
+</LinearLayout>
